@@ -1,30 +1,42 @@
 <header>
   <div class="row">
-    <div class="six columns login">
+    <div class="six columns">
+<!--
       {% if customer %}
-        Welcome, {{ customer.first_name }}!
+        Hey, {{ customer.first_name }}!
         <a href="{{ site_url('logout') }}">Logout</a>
       {% else %}
         <a href="{{ site_url('login') }}">Login or Register</a>
       {% endif %}
+-->
     </div>
     <div class="six columns">
       <div class="row">
-        <div class="seven columns">
+        <div class="nine columns login align-right">
+          {% if customer %}
+            Hey, {{ customer.first_name }}! | 
+            <a class="{{ active_page == 'orders' ? 'active' : null }}" href="{{ site_url('orders') }}">My Orders</a> | 
+            <a class="{{ active_page == 'profile' ? 'active' : null }}"href="{{ site_url('profile') }}">My Account</a> | 
+            <a href="{{ site_url('logout') }}">Logout</a>
+          {% else %}
+            <a href="{{ site_url('login') }}">Login or Register</a>
+          {% endif %}
+<!--
           {{ open_form({'class': 'search', 'method': 'get', 'action': site_url('search')}) }}
             <input type="text" name="query" value="{{query|unescape}}" placeholder="Search store&hellip;"/>
           {{ close_form() }}
+-->
         </div>
-        <div class="five columns" id="mini-cart">{{ partial('shop-minicart') }}</div>
+        <div class="three columns" id="mini-cart">{{ partial('shop-minicart') }}</div>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="four columns logo-container">
+    <div class="twelve columns logo-container">
         <a href="{{ site_url('/') }}"><img src="{{ theme.logoImage.thumbnail('auto', 'auto') }}" alt="" class="logo"></a>
     </div>
-    <div class="eight columns header-menu-bar">
+<!--    <div class="eight columns header-menu-bar">
       {{ widget_block("header-menu") }}
       <ul class="nav-bar">
         {% set active_page = globals.active_page|default('home') %}
@@ -51,7 +63,7 @@
           <li class="menu-item-seperator"></li>
         {% endif %}
       </ul>
-    </div>
+    </div>-->
 
 
     <div class="header-menu-bar-mobile">
@@ -74,7 +86,7 @@
         </li>
         {% if customer %}
           <li><a href="{{ site_url('orders') }}">My Orders</a></li>
-          <li><a href="{{ site_url('profile') }}">My Profile</a></li>
+          <li><a href="{{ site_url('profile') }}">My Account</a></li>
         {% endif %}
         </ul>
         {{ widget_block("header-menu") }}
