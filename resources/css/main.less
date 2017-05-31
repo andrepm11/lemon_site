@@ -1,0 +1,182 @@
+@text-color: rgb(31, 25, 24);
+@background-color: rgb(239, 225, 206);
+@primary-color: hsl(39, 100%, 50%);
+@primary-color-tint-10: lighten(@primary-color, 10%);
+
+@stroke-width: 3px;
+
+
+//Pure Fixes and Overrides
+
+body, .pure-g, .pure-g * {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pure-g > * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.button {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+  display: inline-block;
+  
+  background: none;
+  border-radius: 0;
+  border: @stroke-width @text-color solid;
+  
+  color: @text-color;
+  font-size: 1em;
+  text-decoration: none;
+  font-weight: bold;
+  
+  height: 3em;
+  padding: 1em;
+  line-height: .8;
+  
+  &:hover {
+    background: @text-color;
+    color: @background-color;
+  }
+}
+
+.button-primary {
+  border-color: @primary-color;
+  background-color: @primary-color;
+  &:hover {
+    color: @text-color;
+    background-color: @primary-color-tint-10;
+  }
+}
+
+//Universals
+
+html {
+  color: @text-color;
+  font-size: 1em;
+  line-height: 1.4;
+  background: @background-color;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.runway {
+  max-width: 90%;
+  margin: 1em auto;
+}
+
+h1 {
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* ===== Forms ===== */
+
+.form * {
+  margin: .5em 0;
+  label {
+    font-size: 2em;
+    font-weight: 400;
+  }
+}
+
+.quantity {
+  border-width: 0 0 @stroke-width 0;
+  border-color: @text-color;
+  border-style: solid;
+  
+  text-align: center;
+}
+
+
+/* ===== Landing Page ===== */
+
+//.landing-content {
+//  padding-right: 15em;
+//}
+
+.sale-price, .price {
+  font-size: 2em;
+}
+
+.sale-price {
+  font-weight: bold;
+}
+
+.price {
+  text-decoration: line-through;
+  opacity: .8;
+}
+
+.landing .pure-g {
+  height: 80%;
+}
+
+.landing h1 {
+  margin: .25em 0 0 0;
+  padding: 0;
+  font-weight: 900;
+  font-size: 3em;
+  
+  @media screen and (min-width: 48em) {
+    font-size: 5em;
+    position: relative;
+    left: -3px;
+  }
+}
+
+.landing .features {
+    font-size: 1em;
+  img {
+    max-width: 5em;
+    margin: 1em auto;
+  }
+}
+
+.quantity {
+  font-size: 2em;
+}
+
+.landing p {
+  font-size: 1.5em;
+}
