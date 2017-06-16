@@ -1,0 +1,74 @@
+---
+action: 'shop:products'
+template: inner
+protocol: all
+published: true
+name: Shop
+url: '/shop/:page?'
+---
+<div class="row">
+  <div class="content twelve columns">
+    <h1>Buy Online</h1>
+    <div class="row product-list clearfix">
+      {{
+        partial('shop-product-list', {
+          'products': products
+        })
+      }}
+    </div>
+    <h1>Find a Store</h1>
+    <div class="row content">
+      <div class="four columns">
+        <h3>California</h3>
+          <h4>Palo Alto</h4>
+            <ul>
+              <li><a href="#">Bike Shop</a> 123 Something St</li>
+              <li><a href="#">Pharmacy</a> 1 Palo Alto Way</li>
+              <li><a href="#">Other Bike Shop</a> 125 Something St</li>
+            </ul>
+          <h4>Los Altos</h4>
+            <ul>
+              <li><a href="#">Bike Shop</a> 123 Something St</li>
+              <li><a href="#">Pharmacy</a> 1 Palo Alto Way</li>
+            </ul>
+        <h3>Connecticut</h3>
+          <h4>New Haven</h4>
+          <ul>
+            <li><a href="#">Good Nature Market</a> Address</li>
+            <li><a href="#">College Convenience</a> Address</li>
+            <li><a href="#">J&amp;B Deli</a> Address</li>
+            <li><a href="#">Juice Box</a> Address</li>
+          </ul>
+      </div>
+      <div class="four columns">
+        <h3>Massachusetts</h3>
+          <h4>Cambridge</h4>
+            <ul>
+              <li><a href="#">Market In The Square</a> Address</li>
+              <li><a href="#">Tommy's</a> Address</li>
+            </ul>
+          <h4>Lexington</h4>
+            <ul>
+              <li><a href="#">Good Nature Market</a> Address</li>
+            </ul>
+        <h3>New Jersey</h3>
+          <h4>Lexington</h4>
+            <ul>
+              <li><a href="#">Good Nature Market</a> Address</li>
+            </ul>
+      </div>
+      <div class="four columns">
+        <h3>New York</h3>
+          <h4>Soho, NYC</h4>
+            <ul>
+              <li><a href="#">Essen</a> Address</li>
+            </ul>
+        <h3>Rhode Island</h3>
+          <h4>Providence</h4>
+            <ul>
+              <li><a href="#">Good Nature Market</a> Address</li>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>

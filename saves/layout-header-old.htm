@@ -1,0 +1,65 @@
+<header>
+  <div class="row">
+    <div class="six columns logo-container mobile-two">
+        <a href="{{ site_url('/') }}"><img src="{{ theme.logoImage.thumbnail('auto', 'auto') }}" alt="" class="logo"></a>
+    </div>
+    
+
+        <div class="four columns login align-right hide-for-small">
+          {% if customer %}
+            Hey, {{ customer.first_name }}! | 
+            <a class="{{ active_page == 'orders' ? 'active' : null }}" href="{{ site_url('orders') }}">My Orders</a> | 
+            <a class="{{ active_page == 'profile' ? 'active' : null }}"href="{{ site_url('profile') }}">My Account</a> | 
+            <a href="{{ site_url('logout') }}">Logout</a>
+          {% else %}
+            <a href="{{ site_url('login') }}">Login</a>
+          {% endif %}
+
+        </div>
+    
+        <div class="two columns mobile-two" id="mini-cart">{{ partial('shop-minicart') }}</div>
+    <div class="twelve columns header-menu-bar mobile-four">
+      <a href="javascript:void(0)" class="icon" id="nav-menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+      </a>
+      <div class="header-menu-bar-dropdown">
+        <ul>
+          {% if customer %}
+            <li>Hey, {{ customer.first_name }}!</li>
+          {% else %}
+            <li><a href="{{ site_url('login') }}">Login</a></li>
+          {% endif %}
+          <li><a href="{{ site_url('/') }}">Home</a></li>
+          <li><a href="{{ site_url('shop') }}">Shop</a></li>
+        </li>
+        {% if customer %}
+          <li><a href="{{ site_url('orders') }}">My Orders</a></li>
+          <li><a href="{{ site_url('profile') }}">My Account</a></li>
+          <li><a href="{{ site_url('logout') }}">Logout</a></li>
+        {% endif %}
+        </ul>
+        {{ widget_block("header-menu") }}
+      </div>
+    </div>
+  </div>
+  
+  
+  
+<!--
+  {% if titleArea %}
+    <div class="row secondhead">
+      <div class="twelve columns omega">
+
+        <div id="breadcrumbs-area"><h2 class="left">{{ page.title }}</h2></div>
+        <div class="right">
+          {{ code_block('breadcrumbs') }}
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  {% endif %}
+-->
+</header>

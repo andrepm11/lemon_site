@@ -1,41 +1,107 @@
 ---
-action: 'shop:products'
+action: 'shop:product'
 template: home
 protocol: all
 published: true
 name: Home
 url: /
 ---
-<div class="row">
-  <div class="content twelve columns">
-    <div class="row">
-      <div class="twelve columns banner">
-        <div class="left banner-contents">
-            <h1>{{ theme.bannerTitleText }}</h1>
-            <h4>{{ theme.bannerSentenceText }}</h4>
-            <a class="button right" href="{{ site_url('shop') }}">BUY ME</a>
+{% set product = categories[0].productList[0]%}
+<section>
+  <div class="row">
+    <div class="content twelve columns">
+
+    {{ open_form({'class': 'custom', 'onsubmit': 'return false'}) }}
+
+      <div class="row collapse" id="product-page">
+
+        {% set on_sale = product.onSale %}
+        <div class="five columns push-one landing">
+          <h1>Caffeine without Compromise</h1>
+          <p>8 ingredients, 100mg caffeine from organic green tea.</p>
+          {% if product.enabled %}
+          {% if not product.isOutOfStock() %} {{ flash() }}
+              <div class="row add-to-cart-block">
+                <div class="twelve columns quantity-input-block">
+                  <input type=button value="−" class="qtyminus button no-border" field="quantity" />
+                  <input id="quantity-input" type="text" step="10" min="10" value='{{ quantity|default(" 10 ") }}' name="quantity" />
+                  <input type=button value="+" class="qtyplus button no-border" field="quantity" />
+                  <em><span class="price">
+                    {% if on_sale %}
+                      <span class="oldprice">{{ product.fullPrice|currency }}</span>
+                    {% endif %}
+                    {{ product.price|currency }}
+                    </span></em>
+                </div>
+                <div class="twelve mobile-four columns left">
+                  <input type="hidden" name="productId" value="{{ product.id }}" />
+                  <a class="button accent-1" href="{{ site_url('cart') }}">Quick Buy</a>
+                  <a class="button" href="{{ site_url('about') }}">About Verb</a>
+                </div>
+              </div>
+        <!--
+              {% if product.in_stock_amount %}
+              <div><i><span class="stock-remaining">{{ product.in_stock_amount }} left in stock</span></i></div>
+              {% endif %}
+        -->
+              {% else %}
+              <div class="not-available">
+                <p> This product is temporarily unavailable. </p>
+              </div>
+              {% endif %}
+              {% else %}
+              <div class="not-available">
+                <p>This product is not available.</p>
+              </div> {% endif %} {% if product.priceTiers.count or product.productAttributes.count %}
+              <ul class="product-specs"> {% if product.priceTiers.count %}
+                <li class="product-bulk">
+                  <h3>Bulk Pricing</h3>
+                  <div>
+                    <table class="volume-pricing-table">
+                      <thead>
+                        <tr>
+                          <td>Qty</td>
+                          <td>Price</td>
+                        </tr>
+                      </thead> {% for priceTier in product.priceTiers %}
+                      <tr>
+                        <td> {% if loop.last %} {{priceTier.quantity}}+ {% else %} {{ priceTier.quantity}} - {{product.priceTiers[loop.index].quantity - 1}} {% endif %} </td>
+                        <td>{{priceTier.price|currency}}/each</td>
+                      </tr> {% endfor %} </table>
+                  </div>
+                </li> {% endif %} {% if product.productAttributes.count %}
+                <li class="product-attributes">
+                  <h3>Product Specs</h3>
+                  <div> {{ partial('shop-product-attributes') }} </div>
+                </li> {% endif %} </ul>
+              {% endif %}
+              <!--
+              <h3>Options</h3>
+              {{ partial('shop-product-options') }}
+              {{ partial('shop-product-extras') }}
+              -->
         </div>
+        <div class="five columns pull-one">
+          <div class="item-images">
+            <div class="big-image">
+              <img src="{{ product.images.first.thumbnail(746, 'auto')|default('http://placehold.it/460x300') }}" alt="{{ product.name }}" />
+            </div>
+            {% if product.images.count > 1 %}
+            <ul class="row">
+              {% for image in product.images %}
+              <li class="four columns mobile-two">
+                <a href="{{ image.thumbnail(746, 'auto') }}"><img src="{{ image.thumbnail(367, 367) }}" /></a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+        
       </div>
+
+    {{ close_form() }}
     </div>
-    
-<!--
-    <div class="row product-list">
-      {{ partial("home-product-list") }}
-    </div>
--->
-<!--
-  
-    <div class="row">
-        <div class="four columns">
-            {{ content_block('home-left') }}
-        </div>
-        <div class="four columns">
-            {{ content_block('home-center') }}
-        </div>
-        <div class="four columns">
-            {{ content_block('home-right') }}
-        </div>
-    </div>
--->
   </div>
-</div>
+</section>
+{{ partial('element-photorow') }}

@@ -1,7 +1,41 @@
-<footer class="row">
-
-	<div class="twelve columns footer-menu">
-		{{ widget_block("footer-menu") }}
-	</div>
-
+<footer>
+  <div class="row">
+    <div class="three columns footer-menu push-one">
+      <h2>Quick Nav</h2>
+		  {{ widget_block("footer-menu") }}
+    </div>
+    <div class="six columns footer-menu">
+      <h2>My Account</h2>
+      <ul>
+      <li><a href="{{ site_url('cart') }}">My Cart</a></li>
+       {% if customer %}
+      <li><a href="{{ site_url('profile') }}">My Account</a></li>
+      <li><a href="{{ site_url('orders') }}">My Orders</a></li>
+      {% else %}
+      <li><a href="{{ site_url('login') }}">Login</a></li>
+      <li><a href="{{ site_url('login') }}">Register</a></li>
+      {% endif %}
+      {% if customer %}
+      <li><a href="{{ site_url('logout') }}">Logout</a></li>
+      {% endif %}
+      </ul>
+    </div>
+    <div class="two columns footer-menu">
+      <h2>Contact</h2>
+      <p>Shoot us an email at <br><a href="mailto:team@verbenergybar.com">team@verbenergybar.com</a></p>
+      <ul class="social">
+        <li>
+        <a href="https://instagram.com/verbenergy"><i class="fa fa-instagram"></i></a>
+        <a href="https://facebook.com/verbenergy"><i class="fa fa-facebook"></i></a>
+        <a href="https://pinterest.com/verbenergy"><i class="fa fa-pinterest"></i></a>
+        <a href="https://twitter.com/verbenergy"><i class="fa fa-twitter"></i></a>
+  <!--      <a href="https://youtube.com/verbenergy"><i class="fa fa-youtube"></i></a>-->
+        </li>
+      </ul>
+    </div>
+    <div class="twelve columns bottom-logo">
+      <a href="{{ site_url('/') }}"><img src="{{ 'images/verb_logo_500x188px.png'|theme_resource }}" alt="VERB"></a>
+    </div>
+  </div>
 </footer>
+

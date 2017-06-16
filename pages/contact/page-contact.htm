@@ -5,45 +5,23 @@ published: true
 name: Contact
 url: /contact
 ---
-<div class="row">
-  <div class="content twelve columns">
-    <div class="row">
-      <div class="six columns">
-        <h3>Mailing Address</h3>
-        <p>
-            Customer Service / ECommerce<br />
-            0000 Madeup Street<br />
-            Vancouver, BC<br />
-            000 000<br />
-            Canada
-        </p>
-        <p class="data-list">
-            <strong>E-mail:</strong> comments@email.com<br />
-            <strong>Toll FREE:</strong> 1-800-000-0000
-        </p>
-      </div>
-      <div class="six columns">
-        <h3>Opening hours</h3>
-        <p class="data-list">
-            Monday: 9 AM - 11 PM<br />
-            Tuesday: 9 AM - 11 PM<br />
-            Wednesday: 9 AM - 11 PM<br />
-            Thursday: 9 AM - 12 AM<br />
-            Friday: 9 AM - 12 AM<br />
-            Saturday: 9 AM - 7 PM<br />
-            Sunday: 9 AM - 7 PM
-        </p>
-      </div>
-    </div>
+<section>
+  <div class="row">
+  <div class="content five push-one columns">
+    <h2>Get In Touch</h2>
+    <p class="data-list">
+      <a href="https://www.instagram.com/verbenergy"><strong>Instagram:</strong> @verbenergy</a><br />
+      <a href="https://www.facebook.com/verbenergy"><strong>Facebook:</strong> @verbenergy</a><br />
+      <a href="https://www.twitter.com/verbenergy"><strong>Twitter:</strong> @verbenergy</a><br />
+      <a href="mailto:team@verbenergybar.com"><strong>email:</strong> team@verbenergybar.com</a>
+    </p>
   </div>
-</div>
-
-<div class="row border-bottom padding-bottom">
-    <div class="six columns">
+  
+    <div class="content five columns pull-one">
         {{ flash() }}
     
         {{ open_form({'data-ajax-handler': 'system:onSendMessage'}) }}
-            <h3>Send us a message</h3>
+            <h2>Send us a message</h2>
         
             <div class="row">
                 <div class="twelve columns">
@@ -73,4 +51,30 @@ url: /contact
             <input type="text" name="hp" value="" style="display: none"/>
         {{ close_form() }}
     </div>
+<!--
+    <div class="six columns">
+        <h2>Verb Stores</h2>
+        <h4>New Haven, CT</h4>
+        <p class="data-list">
+            <a href="https://goo.gl/maps/XofrL2ezcBB2">Good Nature Market</a> 15 Broadway Ave<br />
+            <a href="https://goo.gl/maps/qSNMX1o1PAS2">Good Nature Market</a> 44 Whitney Ave<br />
+            <a href="https://goo.gl/maps/cmhspeHgfc62">The Juice Box</a> 1092 Chapel St<br />
+            <a href="https://goo.gl/maps/XAzinJnoMQq">J&amp;B Deli</a> 1146 Chapel St<br />
+        </p>
+        <h4>Cambridge, Boston</h4>
+        <p class="data-list">
+           <a href="https://goo.gl/maps/rmctRgqUZ1C2">Tommy&rsquo;s Value</a> 47 Mt Auburn St<br />
+           <a href="https://goo.gl/maps/YoM4XhJpxnH2">Market in the Square</a> 60 Church St
+        </p>
+        <h4>Providence, RI</h4>
+        <p class="data-list">
+            <a href="http://www.infonewhaven.com/content/college-convenience-and-deli">College Convenience</a> 258 College St<br />
+        </p>
+        <h4>Princeton, NJ</h4>
+        <p class="data-list">
+            <a href="http://www.infonewhaven.com/content/college-convenience-and-deli">College Convenience</a> 258 College St<br />
+        </p>
+      </div>
+-->
 </div>
+</section>

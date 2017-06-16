@@ -1,0 +1,44 @@
+    <div class="eight columns header-menu-bar">
+      {{ widget_block("header-menu") }}
+      <ul class="nav-bar">
+        {% set active_page = globals.active_page|default('home') %}
+        <li class="{{ active_page == 'home' ? 'active' : null }}"><a href="{{ site_url('/') }}">Home</a></li>
+        <li class="{% if categories.count %}has-flyout{% endif %} {{ active_page == 'shop' ? 'active' : null }} right-border-li">
+          <a href="{{ site_url('shop') }}">Shop</a>
+          {% if categories.count %}
+              <a class="flyout-toggle" href="{{ site_url('shop') }}"><span> </span></a>
+              <ul class="flyout" style="display: none;">
+                {% tree categories %}
+                    {% for category in tree.items %}
+                        <li><a href="/category/{{ category.fullUrlName }}">{{ category.name }}</a></li>
+                    {% endfor %}
+                {% endtree %}
+              </ul>
+          {% endif %}
+        </li>
+        <li class="menu-item-seperator"></li>
+        {% if customer %}
+          <li class="{{ active_page == 'orders' ? 'active' : null }}"><a href="{{ site_url('orders') }}">My Orders</a></li>
+          <li class="{{ active_page == 'profile' ? 'active' : null }}">
+            <a href="{{ site_url('profile') }}">My Profile</a>
+          </li>
+          <li class="menu-item-seperator"></li>
+        {% endif %}
+      </ul>
+    </div>
+<!--SEARCH BAR-->
+          {{ open_form({'class': 'search', 'method': 'get', 'action': site_url('search')}) }}
+            <input type="text" name="query" value="{{query|unescape}}" placeholder="Search store&hellip;"/>
+          {{ close_form() }}
+<!--Mobile Subnav-->
+          <li class="mobile-subnav">
+            {% if categories.count %}
+              <ul>
+                {% tree categories %}
+                    {% for category in tree.items %}
+                        <li><a href="/category/{{ category.fullUrlName }}">{{ category.name }}</a></li>
+                    {% endfor %}
+                {% endtree %}
+              </ul>
+            {% endif %}
+          </li>

@@ -1,0 +1,50 @@
+.nav-bar > li.has-flyout > a:first-child {
+  padding-right: 20px;
+}
+
+.nav-bar > li.has-flyout > a:first-child:after {
+  right: 4px;
+  top: 9px;
+  border: none;
+  background: url(../images/dropdown.gif) no-repeat;
+  height: 13px;
+  width: 13px;
+}
+
+.flyout {
+  border: none;
+  width: 245px;
+  left: -90px;
+  margin-top: 10px;
+  background: none;
+  box-shadow: none;
+}
+
+.flyout:before {
+  content: "";
+  background: url(../images/dropdowntop.gif) no-repeat 50% 0;
+  width: 100%;
+  height: 19px;
+  display: block;
+  position: absolute;
+  top: -19px;
+}
+
+.nav-bar li ul.flyout li {
+  border-left: none;
+  margin: 0px 10px;
+}
+
+.nav-bar li ul.flyout li a {
+  background-color: #333333;
+  color: #fff!important;
+  font-weight: normal!important;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.nav-bar li ul.flyout li a:hover {
+  background-color: #1b1b1b;
+  color: #fff;
+}

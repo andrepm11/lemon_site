@@ -6,15 +6,16 @@ published: true
 name: Product
 url: '/product/:urlName'
 ---
-<div class="row">
+<section>
 
+<div class="row">
   <div class="content twelve columns">
 
   {{ open_form({'class': 'custom', 'onsubmit': 'return false'}) }}
 
     {% if product %}
 
-    <div class="row" id="product-page">
+    <div class="row collapse" id="product-page" class="reverse">
       {{ partial('shop-product') }}
     </div>
 
@@ -51,3 +52,4 @@ url: '/product/:urlName'
   </div>
 
 </div>
+</section>

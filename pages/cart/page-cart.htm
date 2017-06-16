@@ -6,10 +6,12 @@ published: true
 name: Cart
 url: /cart
 ---
-<div class="row">
-  <div class="content twelve columns">
-    {{ open_form({'class': 'custom'}) }}
-      <div id="cart-content">{{ partial('shop-cart-content') }}</div>
-    {{ close_form() }}
+<section>
+  <div class="row">
+    <div class="content twelve columns">
+      {{ open_form({'class': 'custom'}) }}
+        <div id="cart-content">{{ partial('shop-cart-content') }}</div>
+      {{ close_form() }}
+    </div>
   </div>
-</div>
+</section>

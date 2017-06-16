@@ -1,7 +1,3 @@
-//
-//
-// Zurb Foundation stuff
-//
 ;(function ($, window, undefined) {
   'use strict';
 
@@ -102,6 +98,10 @@
 
 (function ($) {
   //
+  //allow :active states in mobile
+  //
+  document.addEventListener("touchstart", function(){}, true);
+  //
   // Automatically apply Foundation custom form styles when an AJAX request finishes
   //
   $(window).on('onAfterAjaxUpdate', function(){
@@ -110,6 +110,22 @@
   });
 
   $(document).ready(function() {
+    //
+    // Handle FAQ
+    //
+    $(".q-answer.closed").hide();
+    $(".q-title").on('click', function(){
+      if ($(this).hasClass("active")) {
+        $(this).removeClass("active");
+        $(this).next(".q-answer").slideToggle("100").removeClass("visible").addClass("closed");
+      } else {
+        $(".q-title").removeClass("active");
+        $(".q-answer.visible").slideToggle("100").removeClass("visible").addClass("closed");
+
+        $(this).addClass("active");
+        $(this).next(".q-answer").slideToggle("100").removeClass("closed").addClass("visible");
+      }
+    });
     //
     // Handle thumbnail clicks on the Product page
     //
@@ -134,6 +150,49 @@
     //
     // Handle the Enter key in the Quantity field
     //
+    $('#cart-content').on('keydown', 'input.quantity', function(ev) {
+      if (ev.keyCode == 13) {
+        $(this).sendRequest('shop:cart', {
+          update: {'#cart-content': 'shop-cart-content', '#mini-cart': 'shop-minicart'}
+        });
+      }
+    });
+    //
+    // Handle the Arrow keys and buttons on the Product Page Quantity field
+    //
+    $('.qtyplus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment
+            $('input[name='+fieldName+']').val(currentVal + 10);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(0);
+        }
+    });
+    // This button will decrement the value till 0
+    $(".qtyminus").click(function(e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If it isn't undefined or its greater than 0
+        if (!isNaN(currentVal) && currentVal > 10) {
+            // Decrement one
+            $('input[name='+fieldName+']').val(currentVal - 10);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(10);
+        }
+    });
     $('#cart-content').on('keydown', 'input.quantity', function(ev) {
       if (ev.keyCode == 13) {
         $(this).sendRequest('shop:cart', {
@@ -196,8 +255,8 @@
     //
     // Handle responsive nav for mobile view
     //
-    $('.header-menu-bar-mobile .icon').on("click", function(){
-      $('.header-menu-bar-mobile-dropdown').toggleClass("menu-show");
+    $('#nav-menu-icon').on("click", function(){
+      $('header').toggleClass("menu-show");
     });
 
     //

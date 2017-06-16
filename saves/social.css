@@ -1,0 +1,53 @@
+/*===========================================================
+====================== SOCIAL LINKS =========================
+=============================================================*/
+
+.social-links {
+  text-align: center;
+}
+
+.social-links .icon {
+  display: inline-block;
+}
+
+.social-links li {
+  display: inline-block;
+}
+
+.social-links span {
+  padding: 5px;
+}
+
+.product-info .social {
+  margin: 0 -1em -1em;
+  padding: 1em;
+}
+
+.facebook-wrapper,
+.twitter-wrapper,
+.pinterest-wrapper {
+  display: inline-block;
+  width: auto;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 5em;
+  color: white;
+  padding: 0 .2em;
+  font-size: 1.2em;
+  font-weight: 400;
+  * {
+    display: inline-block;
+  }
+}
+
+.facebook-wrapper {
+  background: #3b5998;
+}
+
+.twitter-wrapper {
+  background: #55acee;
+}
+
+.pinterest-wrapper {
+  background: #d50f25;
+}
